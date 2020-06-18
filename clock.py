@@ -1,3 +1,4 @@
+#library for RTC clock
 import time
 import datetime
 import math
@@ -62,7 +63,7 @@ def DisplayDigit(InDecimal, InDigit):
         else:
                 raise ValueError('Value InDigit is out of range')
 
-def wachten():
+def Delay():
         time.sleep(.001)
 
 def DisplayLeds(StatusLeds):

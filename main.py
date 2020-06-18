@@ -4,13 +4,13 @@ try:
         while (1):
                 (Digit1, Digit2, Digit3, Digit4, Leds) = GetTimeToDigit()
                 DisplayDigit(Digit1, 1)
-                wachten()
+                Delay()
                 DisplayDigit(Digit2, 2)
-                wachten()
+                Delay()
                 DisplayDigit(Digit3, 3)
-                wachten()
+                Delay()
                 DisplayDigit(Digit4, 4)
-                wachten()
+                Delay()
                 DisplayLeds(Leds)
 
 except KeyboardInterrupt:
