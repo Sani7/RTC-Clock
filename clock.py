@@ -24,7 +24,7 @@ Select = (4, 17, 27, 22) # D1, D2, D3, D4
 t = GPIO.HIGH
 f = GPIO.LOW
 
-def SetDigits(Decimal):
+def SetDigits(Decimal, DP):
         global Digit
         if Decimal == 0:
                 GPIO.output(Digit, (f, f, f, f, f, t, f, t))
@@ -48,10 +48,14 @@ def SetDigits(Decimal):
                 GPIO.output(Digit, (f, t, f, f, f, f, f, t))
         else:
                 raise ValueError('Value Decimal is out of range')
+        if DP == 1:
+                GPIO.output(6, f)
+        else:
+                GPIO.output(6, t)
 
-def DisplayDigit(InDecimal, InDigit):
+def DisplayDigit(InDecimal, DP, InDigit):
         global Select
-        SetDigits(InDecimal)
+        SetDigits(InDecimal, DP)
         if InDigit == 1:
                 GPIO.output(Select, (t, f, f, f))
         elif InDigit == 2:
@@ -63,7 +67,7 @@ def DisplayDigit(InDecimal, InDigit):
         else:
                 raise ValueError('Value InDigit is out of range')
 
-def Delay():
+def wachten():
         time.sleep(.001)
 
 def DisplayLeds(StatusLeds):
