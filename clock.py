@@ -2,8 +2,8 @@
 import time
 import datetime
 import math
-import RPi.GPIO as GPIO
-GPIO.setmode(GPIO.BCM)
+import RPi.GPIO as GPIO # Importing the GPIO library
+GPIO.setmode(GPIO.BCM)	# Setting the right Board layout that is used.
 GPIO.setup(5, GPIO.OUT)
 GPIO.setup(26, GPIO.OUT)
 GPIO.setup(16, GPIO.OUT)
@@ -67,7 +67,7 @@ def DisplayDigit(InDecimal, DP, InDigit):
         else:
                 raise ValueError('Value InDigit is out of range')
 
-def wachten():
+def Delay():
         time.sleep(.001)
 
 def DisplayLeds(StatusLeds):
@@ -77,12 +77,12 @@ def DisplayLeds(StatusLeds):
                 GPIO.output(18, f)
 
 def GetTimeToDigit():
-        now = datetime.datetime.now()
-        hour = now.hour
-        hour10 = math.floor(hour / 10)
-        hour1 = hour % 10
+        now = datetime.datetime.now()		# Getting the time to a variable called now
+        hour = now.hour					
+        hour10 = math.floor(hour / 10)		# Calculating the first digit of the hour variable
+        hour1 = hour % 10					# Calculating the seccond digit of the hour variable
         minute = now.minute
-        minute10 = math.floor(minute / 10)
-        minute1 = minute % 10
+        minute10 = math.floor(minute / 10)	# Calculating the first digit of the minute variable
+        minute1 = minute % 10				# Calculating the seccond digit of the minute variable
         Leds = now.second % 2 == 0
         return (hour10, hour1, minute10, minute1, Leds)
