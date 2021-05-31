@@ -49,9 +49,9 @@ def SetDigits(Decimal, DP):
         else:
                 raise ValueError('Value Decimal is out of range')
         if DP == 1:
-                GPIO.output(6, f)
-        else:
                 GPIO.output(6, t)
+        else:
+                GPIO.output(6, f)
 
 def DisplayDigit(InDecimal, DP, InDigit):
         global Select
